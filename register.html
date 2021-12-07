@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Войти на Kolesa.kz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/dist/img/favicons/kolesa/favicon.ico">
+    <link href="register.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="signin">
+		<back-button destination="https://kolesa.kz/passport/register/"></back-button>
+		<div class="projects">
+							<a href="#"><img src="https://kolesa.kz/static/frontend/images/kolesa-logo.svg"></a>
+	<a href="https://krisha.kz/"><img src="https://kolesa.kz/static/frontend/images/krisha-logo.svg"></a>
+	<a href="https://market.kz/"><img src="https://kolesa.kz/static/frontend/images/market-logo.svg"></a>
+        </div>
+		<div class="box" class="signin-form hide">
+			<h1><span v-else>Вход в личный кабинет</span></h1>
+			
+			
+			<form v-if="!hasPasswordForm" method="post" id="signin-form" class="forms" @submit.prevent="submitData" @keyup.tab="submitData">
+				<input type="hidden" id="login_csrf" name="csrf" value="YnZqcHNZMTd5b2EvWkpEZWw4TTliQT09" />				
+				<div class="form-item form-item-email">
+					<div class="login-block">
+						<input type="text" id="login" name="login" autocapitalize="off" autocorrect="off" autofocus="autofocus" placeholder="Введите номер телефона" v-model.trim="textLogin" :disabled="hasAccount" @keyup.enter="submitData" @keydown.tab.prevent="submitData" />						<span class="clear-login" v-if="hasAccount" @click="clearLogin"></span>
+					</div>
+				</div>
+				<div id="g-recaptcha" data-callback="captchaSuccessfulCallback" data-size="compact"></div>
+				<div class="hide form-item form-item-email " v-show="isPassword">
+					<div class="help-text"></div>
+					<input type="password" id="password" name="password" autocorrect="off" placeholder="Пароль" v-model="textPassword" v-focus="type" :disabled="loadForm" @keyup.enter="submitData" />				</div>
+				<div class="vhod">
+					<button>Вход</button>
+				</div>
+
+				
+								<div class="signin-form__forget buttons-group" v-if="hasAccount && isPassword">
+					<ui-button :disabled="isLocked" is-transparent @click="updatedInfo(true)">
+						Забыли пароль?					</ui-button>
+				</div>
+			</form>
+			<password v-else :skip-url="backUrl" :is-view="hasPasswordForm" :auth-token="token" :oa-code="oaCode" :is-login-by-email="isLoginFormatEmail" :is-password-restore="restore" @close="handlePasswordClose" @update-backurl="updateBackUrl" data-destination="https://kolesa.kz/passport/register/"></password>
+		</div>
+
+		<div class="bottom">
+			<div class="support-link">
+				<a href="https://kolesa.kz/content/service/write-us/">Написать в службу поддержки</a>
+			</div>
+		</div>
+	</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+.box{
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 5px 10px #ccc ;
+	border: 1px solid black;
+	width: 300px;
+	height: 300px;
+	
+}
+.container{
+	display: flex;
+	justify-content:center;
+	margin-top: 60px;
+	border-radius: 3px;
+
+}
+
+#login{
+	height: 35px;
+	width: 260px;
+}
+#password{
+	height: 35px;
+	width: 260px;
+
+}
+.vhod{
+
+    height: 35px;
+    width: 260px;
+}
+h1 {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #1c1819;
+    margin: 0 0 16px;
+}
